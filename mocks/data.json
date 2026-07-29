@@ -1,0 +1,306 @@
+{
+    "listaProdutosEstoqueERP": [
+        {
+            "id": 1,
+            "produto": "Dom Casmurro",
+            "quantidade": 42
+        },
+        {
+            "id": 2,
+            "produto": "1984",
+            "quantidade": 15
+        },
+        {
+            "id": 3,
+            "produto": "O Pequeno Príncipe",
+            "quantidade": 88
+        },
+        {
+            "id": 4,
+            "produto": "O Senhor dos Anéis",
+            "quantidade": 7
+        },
+        {
+            "id": 5,
+            "produto": "Harry Potter e a Pedra Filosofal",
+            "quantidade": 54
+        },
+        {
+            "id": 6,
+            "produto": "O Alquimista",
+            "quantidade": 22
+        },
+        {
+            "id": 7,
+            "produto": "A Menina que Roubava Livros",
+            "quantidade": 31
+        },
+        {
+            "id": 8,
+            "produto": "O Código Da Vinci",
+            "quantidade": 12
+        },
+        {
+            "id": 9,
+            "produto": "Orgulho e Preconceito",
+            "quantidade": 65
+        },
+        {
+            "id": 10,
+            "produto": "O Diário de Anne Frank",
+            "quantidade": 40
+        },
+        {
+            "id": 11,
+            "produto": "Cem Anos de Solidão",
+            "quantidade": 18
+        },
+        {
+            "id": 12,
+            "produto": "A Revolução dos Bichos",
+            "quantidade": 92
+        },
+        {
+            "id": 13,
+            "produto": "O Hobbit",
+            "quantidade": 25
+        },
+        {
+            "id": 14,
+            "produto": "Grande Sertão: Veredas",
+            "quantidade": 9
+        },
+        {
+            "id": 15,
+            "produto": "Ensaio Sobre a Cegueira",
+            "quantidade": 37
+        },
+        {
+            "id": 16,
+            "produto": "O Sol é para Todos",
+            "quantidade": 50
+        },
+        {
+            "id": 17,
+            "produto": "Moby Dick",
+            "quantidade": 14
+        },
+        {
+            "id": 18,
+            "produto": "Crime e Castigo",
+            "quantidade": 21
+        },
+        {
+            "id": 19,
+            "produto": "O Retrato de Dorian Gray",
+            "quantidade": 73
+        },
+        {
+            "id": 20,
+            "produto": "Admirável Mundo Novo",
+            "quantidade": 29
+        },
+        {
+            "id": 21,
+            "produto": "O Grande Gatsby",
+            "quantidade": 45
+        },
+        {
+            "id": 22,
+            "produto": "Frankenstein",
+            "quantidade": 33
+        },
+        {
+            "id": 23,
+            "produto": "Drácula",
+            "quantidade": 19
+        },
+        {
+            "id": 24,
+            "produto": "A Metamorfose",
+            "quantidade": 61
+        },
+        {
+            "id": 25,
+            "produto": "Fahrenheit 451",
+            "quantidade": 27
+        },
+        {
+            "id": 26,
+            "produto": "Memórias Póstumas de Brás Cubas",
+            "quantidade": 55
+        },
+        {
+            "id": 27,
+            "produto": "It: A Coisa",
+            "quantidade": 10
+        },
+        {
+            "id": 28,
+            "produto": "O Silmarillion",
+            "quantidade": 6
+        },
+        {
+            "id": 29,
+            "produto": "Capitães da Areia",
+            "quantidade": 48
+        },
+        {
+            "id": 30,
+            "produto": "O Caçador de Pipas",
+            "quantidade": 36
+        }
+    ],
+    "listaProdutosEstoqueLoja": [
+        {
+            "id": 1,
+            "produto": "Dom Casmurro",
+            "quantidade": 42
+        },
+        {
+            "id": 2,
+            "produto": "1984",
+            "quantidade": 15
+        },
+        {
+            "id": 3,
+            "produto": "O Pequeno Príncipe",
+            "quantidade": 88
+        },
+        {
+            "id": 4,
+            "produto": "O Senhor dos Anéis",
+            "quantidade": 7
+        },
+        {
+            "id": 5,
+            "produto": "Harry Potter e a Pedra Filosofal",
+            "quantidade": 54
+        },
+        {
+            "id": 6,
+            "produto": "O Alquimista",
+            "quantidade": 22
+        },
+        {
+            "id": 7,
+            "produto": "A Menina que Roubava Livros",
+            "quantidade": 31
+        },
+        {
+            "id": 8,
+            "produto": "O Código Da Vinci",
+            "quantidade": 12
+        },
+        {
+            "id": 9,
+            "produto": "Orgulho e Preconceito",
+            "quantidade": 65
+        },
+        {
+            "id": 10,
+            "produto": "O Diário de Anne Frank",
+            "quantidade": 40
+        },
+        {
+            "id": 11,
+            "produto": "Cem Anos de Solidão",
+            "quantidade": 18
+        },
+        {
+            "id": 12,
+            "produto": "A Revolução dos Bichos",
+            "quantidade": 92
+        },
+        {
+            "id": 13,
+            "produto": "O Hobbit",
+            "quantidade": 25
+        },
+        {
+            "id": 14,
+            "produto": "Grande Sertão: Veredas",
+            "quantidade": 9
+        },
+        {
+            "id": 15,
+            "produto": "Ensaio Sobre a Cegueira",
+            "quantidade": 37
+        },
+        {
+            "id": 16,
+            "produto": "O Sol é para Todos",
+            "quantidade": 50
+        },
+        {
+            "id": 17,
+            "produto": "Moby Dick",
+            "quantidade": 14
+        },
+        {
+            "id": 18,
+            "produto": "Crime e Castigo",
+            "quantidade": 21
+        },
+        {
+            "id": 19,
+            "produto": "O Retrato de Dorian Gray",
+            "quantidade": 73
+        },
+        {
+            "id": 20,
+            "produto": "Admirável Mundo Novo",
+            "quantidade": 29
+        },
+        {
+            "id": 21,
+            "produto": "O Grande Gatsby",
+            "quantidade": 45
+        },
+        {
+            "id": 22,
+            "produto": "Frankenstein",
+            "quantidade": 33
+        },
+        {
+            "id": 23,
+            "produto": "Drácula",
+            "quantidade": 19
+        },
+        {
+            "id": 24,
+            "produto": "A Metamorfose",
+            "quantidade": 61
+        },
+        {
+            "id": 25,
+            "produto": "Fahrenheit 451",
+            "quantidade": 27
+        },
+        {
+            "id": 26,
+            "produto": "Memórias Póstumas de Brás Cubas",
+            "quantidade": 55
+        },
+        {
+            "id": 27,
+            "produto": "It: A Coisa",
+            "quantidade": 10
+        },
+        {
+            "id": 28,
+            "produto": "O Silmarillion",
+            "quantidade": 6
+        },
+        {
+            "id": 29,
+            "produto": "Capitães da Areia",
+            "quantidade": 48
+        },
+        {
+            "id": 30,
+            "produto": "O Caçador de Pipas",
+            "quantidade": 36
+        }
+    ]
+}

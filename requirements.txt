@@ -1,0 +1,5 @@
+json
+fastapi
+uvicorn
+requests
+dotenv
