@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI
 import uvicorn
 import json
@@ -67,11 +68,13 @@ async def vendaLoja(id: int, quantidade: int):
     """
     Atualiza a venda de um produto específico do estoque da loja
     """
-    response = dataLoja
-    produto = filter(lambda produto: produto['id'] == id, response)
+    if quantidade <= 0:
+        return {"status": 400, "mensagem": "Quantidade inválida para venda"}
+
+    produtos = list(filter(lambda produto: produto['id'] == id, dataLoja))
     
-    if produto:
-        produto = list(produto)[0]
+    if produtos:
+        produto = produtos[0]
         if produto['quantidade'] >= quantidade:
             produto['quantidade'] -= quantidade
             response = {"status": 200, "mensagem": "Venda realizada com sucesso"}
@@ -87,44 +90,58 @@ async def vendaERP(id: int, quantidade: int):
     """
     Atualiza a venda de um produto específico do estoque do ERP
     """
-    response = dataERP
-    produto = filter(lambda produto: produto['id'] == id, response)
-    
     if quantidade <= 0:
-        response = {"status": 400, "mensagem": "Quantidade inválida para venda"}
-    else:
-        if produto:
-            produto = list(produto)[0]
-            if produto['quantidade'] >= quantidade:
-                produto['quantidade'] -= quantidade
-                response = {"status": 200, "mensagem": "Venda realizada com sucesso"}
-            else:
-                response = {"status": 400, "mensagem": "Quantidade insuficiente em estoque do ERP"}
+        return {"status": 400, "mensagem": "Quantidade inválida para venda"}
+
+    produtos = list(filter(lambda produto: produto['id'] == id, dataERP))
+    
+    if produtos:
+        produto = produtos[0]
+        if produto['quantidade'] >= quantidade:
+            produto['quantidade'] -= quantidade
+            response = {"status": 200, "mensagem": "Venda realizada com sucesso"}
         else:
-            response = {"status": 404, "mensagem": "Produto não encontrado"}
+            response = {"status": 400, "mensagem": "Quantidade insuficiente em estoque do ERP"}
+    else:
+        response = {"status": 404, "mensagem": "Produto não encontrado"}
     
     return response
 
 @app.patch("/loja/estoque/produto/{id}/atualizar", status_code=200)
-async def atualizarProdutoLoja(nome: str, quantidade: int):
+async def atualizarProdutoLoja(id: int, quantidade: int):
     """
-    Atualiza a venda de um produto específico do estoque do ERP
+    Atualiza a quantidade em estoque de um produto específico da loja
     """
-    response = dataERP
-    produto = filter(lambda produto: produto['id'] == id, response)
+    if quantidade < 0:
+        return {"status": 400, "mensagem": "Quantidade inválida para estoque"}
+
+    produtos = list(filter(lambda produto: produto['id'] == id, dataLoja))
     
-    if quantidade <= 0 or isInterger(quantidade) == False:
-        response = {"status": 400, "mensagem": "Quantidade inválida para venda"}
+    if produtos:
+        produto = produtos[0]
+        produto['quantidade'] = quantidade
+        response = {"status": 200, "mensagem": "Estoque da loja atualizado com sucesso"}
     else:
-        if produto:
-            produto = list(produto)[0]
-            if produto['quantidade'] >= quantidade:
-                produto['quantidade'] -= quantidade
-                response = {"status": 200, "mensagem": "Venda realizada com sucesso"}
-            else:
-                response = {"status": 400, "mensagem": "Quantidade insuficiente em estoque do ERP"}
-        else:
-            response = {"status": 404, "mensagem": "Produto não encontrado"}
+        response = {"status": 404, "mensagem": "Produto não encontrado"}
+    
+    return response
+
+@app.patch("/erp/estoque/produto/{id}/atualizar", status_code=200)
+async def atualizarProdutoERP(id: int, quantidade: int):
+    """
+    Atualiza a quantidade em estoque de um produto específico do ERP
+    """
+    if quantidade < 0:
+        return {"status": 400, "mensagem": "Quantidade inválida para estoque"}
+
+    produtos = list(filter(lambda produto: produto['id'] == id, dataERP))
+    
+    if produtos:
+        produto = produtos[0]
+        produto['quantidade'] = quantidade
+        response = {"status": 200, "mensagem": "Estoque do ERP atualizado com sucesso"}
+    else:
+        response = {"status": 404, "mensagem": "Produto não encontrado"}
     
     return response
 
