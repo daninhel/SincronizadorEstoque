@@ -2,12 +2,25 @@
 from fastapi import FastAPI
 import uvicorn
 import json
+import os
+import threading
 
-with open("mocks/data.json", "r", encoding="utf-8") as file:
+ARQUIVO_DADOS = os.path.join(os.path.dirname(__file__), "data.json")
+lock_dados = threading.Lock()
+
+with open(ARQUIVO_DADOS, "r", encoding="utf-8") as file:
     data = json.load(file)
     
 dataERP = data['listaProdutosEstoqueERP']
 dataLoja = data['listaProdutosEstoqueLoja']
+
+def salvarDados():
+    """
+    Persiste o estado atual de dataERP e dataLoja de volta no data.json de forma thread-safe.
+    """
+    with lock_dados:
+        with open(ARQUIVO_DADOS, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4, ensure_ascii=False)
 
 app = FastAPI()
 
@@ -77,6 +90,7 @@ async def vendaLoja(id: int, quantidade: int):
         produto = produtos[0]
         if produto['quantidade'] >= quantidade:
             produto['quantidade'] -= quantidade
+            salvarDados()
             response = {"status": 200, "mensagem": "Venda realizada com sucesso"}
         else:
             response = {"status": 400, "mensagem": "Quantidade insuficiente em estoque da loja"}
@@ -99,6 +113,7 @@ async def vendaERP(id: int, quantidade: int):
         produto = produtos[0]
         if produto['quantidade'] >= quantidade:
             produto['quantidade'] -= quantidade
+            salvarDados()
             response = {"status": 200, "mensagem": "Venda realizada com sucesso"}
         else:
             response = {"status": 400, "mensagem": "Quantidade insuficiente em estoque do ERP"}
@@ -120,6 +135,7 @@ async def atualizarProdutoLoja(id: int, quantidade: int):
     if produtos:
         produto = produtos[0]
         produto['quantidade'] = quantidade
+        salvarDados()
         response = {"status": 200, "mensagem": "Estoque da loja atualizado com sucesso"}
     else:
         response = {"status": 404, "mensagem": "Produto não encontrado"}
@@ -139,6 +155,7 @@ async def atualizarProdutoERP(id: int, quantidade: int):
     if produtos:
         produto = produtos[0]
         produto['quantidade'] = quantidade
+        salvarDados()
         response = {"status": 200, "mensagem": "Estoque do ERP atualizado com sucesso"}
     else:
         response = {"status": 404, "mensagem": "Produto não encontrado"}
@@ -146,6 +163,6 @@ async def atualizarProdutoERP(id: int, quantidade: int):
     return response
 
 if __name__ == "__main__":
-    uvicorn.run("server:app", host="127.0.0.1", port=4000, reload=True)
+    uvicorn.run("server:app", host="127.0.0.1", port=4000, reload=True, reload_includes=["*.py"])
 
 
